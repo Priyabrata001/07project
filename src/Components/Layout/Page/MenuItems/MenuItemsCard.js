@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//const data=React.createContext();
 
 function MenuItemCard({ menuItems }) {
+    
+    //const [useSate,setUseState]=useSate[('')];
   return (
     <div className="col-md-4 col-12 p-2">
       <div

@@ -1,6 +1,23 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 function MenuItemDetails() {
+  const { id } = useParams();
+  const[menuItem,setMenuItem]=useState([]);
+  
+    useEffect(() => {
+      axios
+        .get(`https://redmangoapi.azurewebsites.net/api/MenuItem/${id}`)
+        .then((response) => {
+          console.log(response.data);
+          setMenuItem(response.data.result);
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    }, []);
+  
+
   return (
     <div className="container pt-4 pt-md-5">
       <div className="row">
@@ -11,7 +28,7 @@ function MenuItemDetails() {
               className="badge text-bg-dark pt-2"
               style={{ height: "40px", fontSize: "20px" }}
             >
-              CATEGORY
+              {menuItem.category}
             </span>
           </span>
           <span>
